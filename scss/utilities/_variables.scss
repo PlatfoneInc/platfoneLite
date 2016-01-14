@@ -1,0 +1,43 @@
+//==Typography
+$font-weight--light      : 300;
+$font-weight--medium     : 400;
+$font-weight--bold       : 600;
+$font-weight--ultra-bold : 700;
+
+$font-small: .8em;
+$font-mid: 1.2em;
+$font-large: 2em;
+
+// img-size
+
+$img-sm: 32px;
+$img-md: 64px;
+$img-lg: 128px;
+
+//== color
+
+$white: #FFFFFF;
+
+$base: #FAFAFA;
+
+//== shadows
+
+$side-shadow: 1px 0px 1px 0px rgba(0,0,0,0.24);
+$form-shadow: 0px 0px 1px 0px rgba(0,0,0,0.26);
+$card-shadow: 0px 0px 1px 0px rgba(0,0,0,0.26);
+
+
+$ui-colors: (
+	default : $brand-primary,
+	success : $brand-success,
+	error   : $brand-danger,
+	warning : $brand-warning,
+	info    : $brand-info
+);
+
+$ram-colors:  #4FC5C7,
+  #97EC71,
+  #FA7DA6,
+  #A1DEC3,
+	#8A8CB2,
+  #DBF977;
