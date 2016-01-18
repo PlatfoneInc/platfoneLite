@@ -11,6 +11,7 @@ app.directive('postListing', function(){
     controller: function($scope, Posts, $routeParams){
       
       $scope.posts = [];
+      var tmpPosts = [];
       
       if ($routeParams.topicName){
         var postsRef = new Firebase("https://platfonechat.firebaseio.com/posts");
@@ -21,18 +22,29 @@ app.directive('postListing', function(){
           postsRef.child(snap.key()).once("value", function(mySnap) {
             // Render the comment on the link page.
             console.log('mySnap=', mySnap.val());
-            $scope.posts.push(mySnap.val());
+            tmpPosts.push(mySnap.val());
             
             // // prevent scope digest in progress issue
             // var phase = $scope.$root.$$phase;
             // if(!(phase == '$apply') && !(phase == '$digest')) {
-            $scope.$apply();
+            
             // }
+            console.log('tmpPosts=', tmpPosts);
           });
+        
+          $scope.posts = tmpPosts;
+          console.log('$scope.posts=', $scope.posts);
+          
+          var phase = $scope.$root.$$phase;
+          if(!(phase == '$apply') && !(phase == '$digest')) {
+            $scope.$apply();
+          }
+          
         });
       } else {
         $scope.posts = Posts;
       }
+      
       $scope.addComment = function (post, comment) {
         if ($scope.authData) {
           var ref = new Firebase('https://platfonechat.firebaseio.com/' + post.$id + '/comments');
